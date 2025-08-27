@@ -1,48 +1,219 @@
-Ismael Tisminetzky <ismael.tisminetzky@tallertechnologies.net>
-17:42 (há 1 minuto)
-para mim
+# Transaction System
 
-## Code Challenge
+A full-stack transaction management application built with modern web technologies. The system consists of a robust REST API backend and a responsive React frontend for managing financial transactions.
 
-### Task
+## 🏗️ Architecture Overview
 
-You are required to create a simple web application that allows users to submit a monetary transaction. The application should consist of a front-end built with React and a back-end using Node.js and Express. The application should allow users to input the transaction amount and a description, and upon submission, it should display the transaction details on the front-end.
+```
+┌─────────────────┐    HTTP/REST    ┌─────────────────┐
+│                 │ ◄─────────────► │                 │
+│    Frontend     │                 │     Backend     │
+│   (React App)   │                 │   (Express API) │
+│                 │                 │                 │
+└─────────────────┘                 └─────────────────┘
+     Port 5173                           Port 3000
+```
 
-### Requirements
+## 🚀 Quick Start
 
-1.  **Front-End (React)**
+### Prerequisites
 
-    - Create a form that accepts:
+- **Node.js** (v18 or higher)
+- **Yarn** (recommended) or npm
 
-      - Transaction Amount (number)
-      - Transaction Description (text)
+### 1. Backend Setup (Required First)
 
-    - On form submission, display the transaction details below the form.
+```bash
+# Navigate to backend directory
+cd backend
 
-    - Ensure the application is responsive and user-friendly.
+# Install dependencies
+yarn install
 
-2.  **Back-End (Node.js + Express)**
+# Start development server
+yarn dev
+```
 
-    - Set up a simple Express server that handles POST requests to save transaction data.
-    - Implement a GET endpoint to retrieve the transaction data.
-    - Use an in-memory array to store transactions (no database required for this challenge).
+The backend API will be available at `http://localhost:3000`
 
-3.  **Debugging and Testing**
+### 2. Frontend Setup
 
-    - Ensure that the application handles errors gracefully (e.g., invalid input).
-    - Write a simple test case to verify that the transaction data is being saved correctly.
+```bash
+# Navigate to frontend directory (in a new terminal)
+cd frontend
 
-### Constraints
+# Install dependencies
+yarn install
 
-- The challenge should be completed in less than 30 minutes.
-- Use only free resources and libraries.
+# Start development server
+yarn dev
+```
 
-## External Resources
+The frontend application will be available at `http://localhost:5173`
 
-- **React**: [Create React App](<https://reactjs.org/docs/create-a-new-react-app.html#> create-react-app)
-- **Node.js**: [Node.js Official Site](https://nodejs.org/en/)
-- **Express**: [Express.js Documentation](https://expressjs.com/)
-- **Postman** (for testing API): [Postman](https://www.postman.com/)
-- **CORS**: If you encounter CORS issues, you can use the `cors` package in Express.
+## 📦 Project Structure
 
-##
+```
+transaction-system/
+├── backend/                 # REST API Server
+│   ├── src/
+│   │   ├── controllers/     # Request handlers
+│   │   ├── services/        # Business logic
+│   │   ├── schemas/         # Data validation
+│   │   ├── types/           # TypeScript definitions
+│   │   └── lib/             # Utilities & middleware
+│   ├── package.json
+│   └── README.md           # Backend documentation
+│
+├── frontend/               # React Application
+│   ├── src/
+│   │   ├── components/     # React components
+│   │   ├── hooks/          # Custom React hooks
+│   │   ├── services/       # API integration
+│   │   ├── types/          # TypeScript definitions
+│   │   └── lib/            # Utilities
+│   ├── package.json
+│   └── README.md          # Frontend documentation
+│
+└── README.md              # This file
+```
+
+## 🛠️ Backend Features
+
+- **RESTful API** - Clean REST endpoints for transaction management
+- **TypeScript** - Full type safety and modern JavaScript features
+- **Data Validation** - Input validation using Zod schemas
+- **CORS Support** - Cross-origin resource sharing enabled
+- **Clean Architecture** - Separation of concerns with dependency injection
+- **Hot Reload** - Development server with automatic restart
+
+### Backend Technologies
+
+- Node.js + Express.js
+- TypeScript
+- Zod (validation)
+- CORS middleware
+
+## 🎨 Frontend Features
+
+- **Modern React** - Built with React 19 and latest features
+- **Smart Caching** - TanStack Query for server state management
+- **Responsive Design** - Mobile-first approach with Tailwind CSS
+- **Component Library** - Shadcn UI for consistent design
+- **Real-time Updates** - Automatic cache invalidation and updates
+- **Error Handling** - Comprehensive error states and loading indicators
+- **Suspense** - Async loading with React Suspense
+
+### Frontend Technologies
+
+- React 19
+- TanStack Query
+- Tailwind CSS
+- Shadcn UI
+- TypeScript
+- Vite
+
+## 🔌 API Endpoints
+
+### Get All Transactions
+
+```http
+GET http://localhost:3000/
+```
+
+### Create Transaction
+
+```http
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+  "amount": 100.50,
+  "description": "Transaction description"
+}
+```
+
+## 🎯 Key Features
+
+### Transaction Management
+
+- ✅ **View Transactions** - List all transactions with real-time updates
+- ✅ **Add Transactions** - Create new transactions with validation
+- ✅ **Responsive Interface** - Works seamlessly on desktop and mobile
+- ✅ **Loading States** - Visual feedback during operations
+- ✅ **Error Handling** - User-friendly error messages
+
+### Technical Features
+
+- ✅ **Type Safety** - Full TypeScript coverage in both frontend and backend
+- ✅ **Data Validation** - Client and server-side validation
+- ✅ **Caching Strategy** - Smart caching with automatic invalidation
+- ✅ **Hot Reload** - Development servers with instant updates
+- ✅ **Clean Code** - Well-structured, maintainable codebase
+
+## 📖 Detailed Documentation
+
+For detailed setup instructions, API documentation, and development guidelines:
+
+- **Backend Documentation**: See [`backend/README.md`](./backend/README.md)
+- **Frontend Documentation**: See [`frontend/README.md`](./frontend/README.md)
+
+## 🔧 Development Workflow
+
+1. **Start Backend** (Terminal 1):
+
+   ```bash
+   cd backend && yarn dev
+   ```
+
+2. **Start Frontend** (Terminal 2):
+
+   ```bash
+   cd frontend && yarn dev
+   ```
+
+3. **Access Application**:
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:3000
+
+## 🚀 Production Deployment
+
+### Backend
+
+```bash
+cd backend
+yarn build
+yarn start
+```
+
+### Frontend
+
+```bash
+cd frontend
+yarn build
+yarn preview
+```
+
+## 🧪 Testing the System
+
+### Using the Web Interface
+
+1. Open http://localhost:5173
+2. Use the form to add new transactions
+3. View the transaction list updating in real-time
+
+### Using API directly
+
+```bash
+# Create a transaction
+curl -X POST http://localhost:3000/ \
+  -H "Content-Type: application/json" \
+  -d '{"amount": 100.50, "description": "Test transaction"}'
+
+# Get all transactions
+curl http://localhost:3000/
+```
+
+## 📝 License
+
+This project is available under the ISC License.
