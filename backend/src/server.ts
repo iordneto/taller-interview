@@ -1,9 +1,11 @@
 import express from "express";
+import cors from "cors";
 import { makeTransactionController } from "./controllers/transaction.controller";
 import { validateTransaction } from "./lib/middlewares";
 import { transactionSchema } from "./schemas/transaction.schema";
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const transactionController = makeTransactionController();
